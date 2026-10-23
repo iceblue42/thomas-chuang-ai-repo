@@ -1,0 +1,7 @@
+{
+  "name": "no-handbacks",
+  "version": "0.1.0",
+  "author": { "name": "Tommy Chuang" },
+  "description": "Stops Claude handing the owner work it can do itself; owner-facing commands must be Windows PowerShell 5.1",
+  "types": "./types/index.d.ts"
+}

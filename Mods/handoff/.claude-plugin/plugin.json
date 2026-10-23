@@ -1,0 +1,7 @@
+{
+  "name": "handoff",
+  "version": "0.1.0",
+  "description": "One combined next-session prompt: /handoff writes it to <repo>/.mab/handoffs, shelves it, copies it, and can shut the PC down once git is clean and pushed",
+  "author": { "name": "Tommy Chuang" },
+  "types": "./types/index.d.ts"
+}

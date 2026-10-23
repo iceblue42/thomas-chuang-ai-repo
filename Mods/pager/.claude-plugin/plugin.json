@@ -1,0 +1,20 @@
+{
+  "name": "pager",
+  "version": "0.1.0",
+  "author": { "name": "Tommy Chuang" },
+  "description": "MAB run status line, stall and waiting-on-you detection, phone pushes, and an away mode that follows Claude's recommended path. /away, /back, /pager",
+  "userConfig": {
+    "stallMinutes": {
+      "type": "number",
+      "title": "Stall minutes",
+      "description": "A lane (or this session's running turn) with no activity for this long counts as stalled.",
+      "default": 20
+    },
+    "awayAfterMinutes": {
+      "type": "number",
+      "title": "Away after minutes",
+      "description": "No real prompt from you in any session for this long counts as away.",
+      "default": 30
+    }
+  }
+}
