@@ -30,6 +30,7 @@ mirror() {
 MP="$HOME/.claude/my-plugins"
 for p in multi-agent-building multi-agent-building-local; do mirror "$MP/$p" "$REPO/Skills and Plugins/$p"; done
 for p in progress-tracker token-weather handoff pager no-handbacks; do mirror "$MP/$p" "$REPO/Mods/$p"; done
+mirror "$HOME/.claude/skills/patchnotes" "$REPO/Skills and Plugins/patchnotes"
 # claude.ai skills: claude.ai is the source of truth and syncs them down to every device.
 for s in eli5 laymanize shopping-assistant tommy-style; do
   for d in "$HOME"/.claude/skills/synced/*/"$s"; do mirror "$d" "$REPO/Skills and Plugins/$s"; done
