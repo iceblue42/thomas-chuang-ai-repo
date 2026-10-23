@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="patchnotes-from" content="FROM_SHA">
+<meta name="patchnotes-to" content="TO_SHA">
+<title>PRODUCT Patch VERSION</title>
+<style>
+  /* Theme tokens: replace with the repo's own values. Default = dark, Blizzard-ish. */
+  :root {
+    --bg: #0e0d0b;
+    --surface: #1a1814;
+    --text: #e8e2d4;
+    --muted: #a39b88;
+    --accent: #f8b700;
+    --accent-2: #c9a45c;
+    --border: #3a3428;
+    --tip-bg: #f3ecdc;
+    --tip-text: #1a1814;
+    --radius: 6px;
+    --font-body: Georgia, "Times New Roman", serif;
+    --font-head: "Palatino Linotype", Palatino, Georgia, serif;
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #f6f1e7; --surface: #fffaf0; --text: #2a2418; --muted: #6b604c;
+      --accent: #a86b00; --accent-2: #8a6a2c; --border: #d9cdb4;
+      --tip-bg: #2a2418; --tip-text: #fffaf0;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 17px/1.65 var(--font-body); }
+  main { max-width: 820px; margin: 0 auto; padding: 48px 16px 80px; }
+
+  header { border-bottom: 1px solid var(--border); padding-bottom: 24px; margin-bottom: 32px; }
+  .product { color: var(--muted); letter-spacing: .12em; text-transform: uppercase; font-size: .8rem; margin: 0; }
+  h1 { font-family: var(--font-head); color: var(--accent); font-size: clamp(1.9rem, 5vw, 2.6rem); margin: 4px 0 6px; line-height: 1.15; }
+  .date { color: var(--muted); margin: 0 0 16px; }
+  .overview { margin: 0; }
+
+  h2 { font-family: var(--font-head); color: var(--accent); font-size: 1.45rem; margin: 40px 0 12px;
+       padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+  h3 { font-family: var(--font-head); color: var(--accent-2); font-size: 1.15rem; margin: 24px 0 6px; }
+  ul { padding-left: 1.3em; margin: 6px 0; }
+  li { margin: 4px 0; }
+  li > ul { margin: 2px 0 6px; }
+  strong { color: var(--text); }
+
+  .feature { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--accent);
+             border-radius: var(--radius); padding: 14px 18px; margin: 14px 0; }
+  .feature h3 { margin-top: 0; }
+  .feature p { margin: 6px 0; }
+
+  /* Developers' notes */
+  .dev-note { font-style: italic; color: var(--muted); list-style: none; margin-left: -1.3em; padding-left: 1.3em;
+              border-left: 2px solid var(--border); }
+  .dev-note::before { content: "Developers’ notes: "; font-weight: bold; color: var(--accent-2); }
+
+  /* Jargon tooltips: hover and keyboard focus */
+  .term { position: relative; border-bottom: 1px dotted var(--accent); cursor: help; outline: none; }
+  .term:focus-visible { box-shadow: 0 0 0 2px var(--accent); border-radius: 2px; }
+  .term::after {
+    content: attr(data-tip); position: absolute; left: 0; top: calc(100% + 6px); z-index: 10;
+    width: max-content; max-width: min(18rem, 80vw); padding: 8px 11px; border-radius: var(--radius);
+    background: var(--tip-bg); color: var(--tip-text); font: normal .88rem/1.45 system-ui, sans-serif;
+    box-shadow: 0 6px 20px rgba(0,0,0,.35); opacity: 0; visibility: hidden; transition: opacity .12s;
+    pointer-events: none;
+  }
+  .term:hover::after, .term:focus::after { opacity: 1; visibility: visible; }
+  /* ponytail: on phones the tip docks to the bottom of the screen instead of risking off-screen overflow */
+  @media (max-width: 600px) {
+    .term::after { position: fixed; left: 16px; right: 16px; top: auto; bottom: 16px; max-width: none; width: auto; }
+  }
+
+  footer { margin-top: 56px; color: var(--muted); font-size: .85rem; border-top: 1px solid var(--border); padding-top: 14px; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <p class="product">PRODUCT</p>
+    <h1>Patch VERSION</h1>
+    <p class="date">DATE</p>
+    <p class="overview">One or two plain sentences: what this update is about and who will notice.</p>
+  </header>
+
+  <h2>Headline Features</h2>
+  <div class="feature">
+    <h3>Feature name</h3>
+    <p>What you can now do, in one short paragraph.</p>
+  </div>
+
+  <h2>Changes and Updates</h2>
+  <h3>Area name</h3>
+  <ul>
+    <li><strong>Feature:</strong> Now does something new.
+      <ul>
+        <li>Loads in about 1 second (was 4 seconds).</li>
+        <li class="dev-note">Why we did it, in a friendly voice.</li>
+      </ul>
+    </li>
+    <li>Results are now kept as a <span class="term" tabindex="0" data-tip="A saved copy of something so it can be shown faster next time.">cache</span>, so repeat visits are instant.</li>
+  </ul>
+
+  <h2>Bug Fixes</h2>
+  <ul>
+    <li>Fixed an issue where something went wrong in a specific situation.</li>
+  </ul>
+
+  <h2>Known Issues</h2>
+  <ul>
+    <li>Anything not finished or not yet checked.</li>
+  </ul>
+
+  <footer>Covers changes up to DATE.</footer>
+</main>
+</body>
+</html>
