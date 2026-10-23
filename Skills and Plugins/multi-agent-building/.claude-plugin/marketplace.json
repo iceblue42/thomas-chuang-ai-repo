@@ -1,0 +1,17 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "tommy-local",
+  "description": "Tommy's local plugins",
+  "owner": {
+    "name": "Tommy Chuang"
+  },
+  "plugins": [
+    {
+      "name": "multi-agent-building",
+      "description": "Cross-vendor multi-agent build pipeline with Codex review, Workflow recon, .mab/ session log, a relay of short single-purpose sessions under a 50% context cap, taste design briefs, risk-based review tiers and release gate, and a binding plan intent (v1.5) carried into every brief, review and triage.",
+      "source": "./",
+      "category": "productivity",
+      "version": "1.7.0"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "name": "multi-agent-building-local",
+  "version": "1.7.0",
+  "description": "Fork of multi-agent-building (synced to 1.7.0) with a local implementer and test author: qwen3.8:27b in Ollama at max effort, driven through headless Claude Code (claude --bare -p against Ollama's Anthropic-compatible endpoint). Sonnet recon, Fable plans and triages, Codex GPT 6 Astra reviews, Sonnet then Opus on escalation. Same .mab/ log, intent contract, 50%-context session relay, spare pool, programme layer, taste briefs, risk tiers, caps 3/2/3/2, verification pass and release gate; packets always sequential.",
+  "author": {
+    "name": "Tommy Chuang"
+  }
+}

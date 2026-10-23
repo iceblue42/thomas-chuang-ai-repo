@@ -1,0 +1,8 @@
+{
+  "name": "multi-agent-building",
+  "version": "1.7.0",
+  "description": "Cross-vendor multi-agent pipeline: Sonnet recon via Workflow, Fable plans and triages, Codex GPT 6 Astra reviews plans/tests/code, Opus 5.5 (high effort) writes tests and implements (Astra consult if stalled). v1.1: .mab/ project log for cross-session continuity, DAG chunk/lane planning, armed holding prompts for worker sessions and orchestrator successors, taste-plugin design briefs. v1.2: risk-based tiers (light/standard/high-risk), delta-scoped review rounds with caps 3/2/3/2, constrained reviewer mandate, acceptance criteria + verification pass, P0/P1 release gate. v1.3: test author and implementer run as plugin agents on Opus 5.5 at high effort; a stalled implementer goes straight to an Astra consult. v1.4: every run is a relay of short single-purpose sessions (O1 plan, O2 tests, one session per 1-2 chunk packet, O3 ship), each kept under 50% of its context window by a measured meter (get_usage) with handoff at 35%/45%; Codex replies read via -o only, gate logs tailed, 15-line agent reports. v1.5: PLAN.md opens with `## Intent` (purpose, direction, intent guards), copied verbatim into every brief and every Codex prompt; triage rejects any finding whose fix moves against it (intent-conflict), reviewers tag such findings INTENT-CONFLICT, and the verifier grades INTENT first.",
+  "author": {
+    "name": "Tommy Chuang"
+  }
+}

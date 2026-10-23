@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>[[Paper short title]] &mdash; decoded</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]},svg:{fontCache:'global'},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<!-- Optional: charts for genuinely quantitative figures. Uncomment to use Chart.js.
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+-->
+<style>
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  html,body{margin:0;padding:0;background:#eceef7}
+  summary{list-style:none}
+  summary::-webkit-details-marker{display:none}
+  :root{
+    --body:'Newsreader',Georgia,serif; --display:'Space Grotesk',system-ui,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+    --ink:#15192a; --ink-soft:#454d63; --ink-faint:#7a8398;
+    --page:#eceef7; --surface:#ffffff; --surface-2:#f5f6fc;
+    --line:#e3e5f0; --line-strong:#d2d6e6;
+    --accent:#3a5bff; --accent-deep:#2436c4; --accent-tint:#e9edff;
+    --speak:#6d4dff; --speak-tint:#efeafe;
+    --shadow:0 1px 2px rgba(20,24,45,.05),0 14px 36px rgba(20,24,45,.09);
+  }
+  @keyframes lzfade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{animation:none !important; transition:none !important} }
+</style>
+</head>
+<body>
+<div id="lz-root" style="--body:'Newsreader',Georgia,serif; --display:'Space Grotesk',system-ui,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace; --ink:#15192a; --ink-soft:#454d63; --ink-faint:#7a8398; --page:#eceef7; --surface:#ffffff; --surface-2:#f5f6fc; --line:#e3e5f0; --line-strong:#d2d6e6; --accent:#3a5bff; --accent-deep:#2436c4; --accent-tint:#e9edff; --speak:#6d4dff; --speak-tint:#efeafe; --shadow:0 1px 2px rgba(20,24,45,.05),0 14px 36px rgba(20,24,45,.09); min-height:100vh; background:var(--page); background-image:radial-gradient(color-mix(in srgb,var(--ink) 6%,transparent) 1px,transparent 1px); background-size:24px 24px; color:var(--ink); font-family:var(--body); font-size:17px; line-height:1.72; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; animation:lzfade .4s ease both;">
+
+  <div id="lz-progress" aria-hidden="true" style="position:fixed; top:0; left:0; height:2px; width:0; background:linear-gradient(90deg,var(--accent),var(--speak)); z-index:50; transition:width .08s linear; box-shadow:0 0 10px var(--accent);"></div>
+
+  <header style="position:sticky; top:0; z-index:40; background:color-mix(in srgb,var(--surface) 84%,transparent); backdrop-filter:saturate(150%) blur(10px); -webkit-backdrop-filter:saturate(150%) blur(10px); border-bottom:1px solid var(--line); display:flex; align-items:center; gap:1rem; padding:.7rem clamp(1rem,4vw,2rem);">
+    <div style="font-family:var(--mono); font-size:.82rem; font-weight:500; color:var(--ink); letter-spacing:.01em; flex:1; min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; display:flex; align-items:center; gap:.55rem;">
+      <span style="color:var(--accent); font-weight:700;">❯</span>
+      <span style="overflow:hidden; text-overflow:ellipsis;">[[Paper short title]] <span style="color:var(--ink-faint);">· decoded</span></span>
+    </div>
+    <div style="display:flex; gap:.4rem; flex:none;">
+      <button id="theme-toggle" type="button" aria-label="Toggle dark mode" style="font-family:var(--mono); font-size:.74rem; font-weight:500; letter-spacing:.02em; color:var(--ink-soft); background:var(--surface); border:1px solid var(--line-strong); border-radius:9px; padding:.44rem .72rem; cursor:pointer; display:inline-flex; align-items:center; gap:.42rem; transition:border-color .15s,color .15s,background .15s;" style-hover="border-color:var(--accent); color:var(--accent); background:var(--accent-tint);">
+        <span id="theme-ico" style="display:inline-flex;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg></span>
+        <span id="theme-lbl">Dark</span>
+      </button>
+      <button id="open-nav" type="button" aria-haspopup="dialog" style="font-family:var(--mono); font-size:.74rem; font-weight:500; letter-spacing:.02em; color:var(--ink-soft); background:var(--surface); border:1px solid var(--line-strong); border-radius:9px; padding:.44rem .72rem; cursor:pointer; display:inline-flex; align-items:center; gap:.42rem; transition:border-color .15s,color .15s,background .15s;" style-hover="border-color:var(--accent); color:var(--accent); background:var(--accent-tint);">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="18" x2="14" y2="18"></line></svg>
+        Contents
+      </button>
+      <button id="open-gloss" type="button" aria-haspopup="dialog" style="font-family:var(--mono); font-size:.74rem; font-weight:500; letter-spacing:.02em; color:var(--ink-soft); background:var(--surface); border:1px solid var(--line-strong); border-radius:9px; padding:.44rem .72rem; cursor:pointer; display:inline-flex; align-items:center; gap:.42rem; transition:border-color .15s,color .15s,background .15s;" style-hover="border-color:var(--accent); color:var(--accent); background:var(--accent-tint);">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16v14H4z"></path><path d="M4 9h16"></path><path d="M9 5v14"></path></svg>
+        Glossary
+      </button>
+    </div>
+  </header>
+
+  <main style="max-width:53rem; margin:0 auto; padding:clamp(1.4rem,4vw,2.6rem) clamp(1rem,5vw,2.2rem) 6rem;">
+
+    <div style="position:relative; background:var(--surface); border:1px solid var(--line); border-radius:18px; box-shadow:var(--shadow); padding:clamp(1.6rem,4vw,2.8rem); overflow:hidden;">
+      <div style="position:absolute; left:0; top:0; right:0; height:3px; background:linear-gradient(90deg,var(--accent),var(--speak));"></div>
+      <span style="display:inline-flex; align-items:center; gap:.4rem; font-family:var(--mono); font-size:.68rem; font-weight:500; letter-spacing:.18em; text-transform:uppercase; color:var(--accent-deep); background:var(--accent-tint); border:1px solid color-mix(in srgb,var(--accent) 22%,transparent); padding:.32rem .6rem; border-radius:7px;">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M8 9l-3 3 3 3M16 9l3 3-3 3"></path></svg>
+        Laymanized
+      </span>
+      <h1 style="font-family:var(--display); font-weight:700; letter-spacing:-.02em; font-size:clamp(1.7rem,4.5vw,2.5rem); line-height:1.12; margin:.9rem 0 .5rem; color:var(--ink); text-wrap:balance;">[[Full paper title]]</h1>
+      <p style="font-family:var(--mono); font-size:.8rem; color:var(--ink-faint); margin:0;">[[Authors]] · [[Venue / year]] · [[arXiv id or link]]</p>
+      <div style="margin-top:1.6rem; padding:1.15rem 1.3rem 1.2rem; background:var(--surface-2); border:1px solid var(--line); border-left:3px solid var(--accent); border-radius:10px;">
+        <span style="display:block; font-family:var(--mono); font-size:.68rem; font-weight:500; letter-spacing:.12em; text-transform:uppercase; color:var(--accent-deep); margin-bottom:.4rem;">In one honest sentence</span>
+        <p style="margin:0; font-size:1.1rem; color:var(--ink);">[[The paper's core contribution, stated plainly and accurately — no hype, no hedging away the actual claim.]]</p>
+      </div>
+    </div>
+
+    <section class="paper-section" id="sec-method" style="margin-top:1.8rem; background:var(--surface); border:1px solid var(--line); border-radius:18px; box-shadow:var(--shadow); overflow:hidden; scroll-margin-top:4.8rem;">
+      <div style="display:flex; align-items:center; gap:.6rem; padding:.7rem clamp(1.2rem,3vw,1.6rem); border-bottom:1px solid var(--line); background:var(--surface-2);">
+        <span style="width:8px; height:8px; border-radius:2px; background:var(--accent); box-shadow:0 0 8px var(--accent); flex:none;"></span>
+        <span class="eyebrow" style="font-family:var(--mono); font-size:.72rem; font-weight:500; letter-spacing:.14em; text-transform:uppercase; color:var(--accent-deep);">§3 · Method</span>
+      </div>
+      <div style="padding:clamp(1.4rem,3.5vw,2.4rem);">
+        <h2 class="section-title" style="font-family:var(--display); font-weight:600; letter-spacing:-.015em; font-size:clamp(1.35rem,3.2vw,1.7rem); line-height:1.22; margin:.1rem 0 1.1rem; color:var(--ink);">[[Plain-language section title]]</h2>
+
+        <p style="margin:0 0 1.05rem; color:var(--ink);">
+          Ordinary translated prose goes here, at the paper's depth. Introduce a term both
+          ways the first time it appears — for example, the model relies on an
+          <button class="term" type="button" data-term="attention" style="font:inherit; color:var(--accent-deep); background:none; border:0; padding:0 .05em; cursor:help; border-bottom:1.5px dotted var(--accent); line-height:inherit;" style-hover="background:var(--accent-tint); border-radius:3px;">attention mechanism</button>
+          — a way for each token to look at every other token and weight how much each one
+          matters when interpreting it. Keep using the real term afterwards.
+        </p>
+
+        <div class="callout added" style="background:var(--surface-2); border:1px dashed var(--line-strong); border-radius:12px; padding:1rem 1.15rem; margin:1.4rem 0; font-size:1rem;">
+          <span style="display:flex; align-items:center; gap:.45rem; font-family:var(--mono); font-size:.7rem; font-weight:500; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:.45rem;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            Background — added by EVI
+          </span>
+          <p style="margin:0; color:var(--ink-soft);">[[Prerequisite the paper assumes but the reader may not have. Mark it as added so it is never mistaken for the paper's own claim.]]</p>
+        </div>
+
+        <h3 class="subhead" style="font-family:var(--display); font-weight:600; font-size:1.08rem; margin:1.8rem 0 .5rem; color:var(--ink);">[[A sub-idea / paragraph heading if the paper has one]]</h3>
+
+        <p style="margin:0 0 1.05rem; color:var(--ink);">
+          Inline maths renders directly: the score between a query and a key is just their
+          dot product, $q \cdot k$, scaled by $\sqrt{d_k}$.
+        </p>
+
+        <div class="eq-block" style="margin:1.5rem 0; padding:1.1rem 1.2rem; background:var(--surface-2); border:1px solid var(--line); border-left:3px solid var(--accent); border-radius:12px;">
+          <div style="font-family:var(--mono); font-size:.7rem; font-weight:500; letter-spacing:.08em; text-transform:uppercase; color:var(--accent-deep); margin-bottom:.4rem;">[[Name of the equation, e.g. Scaled dot-product attention]]</div>
+          $$ \mathrm{Attention}(Q,K,V) = \mathrm{softmax}\!\left(\frac{QK^{\top}}{\sqrt{d_k}}\right)V $$
+          <p style="margin:.9rem 0 0; color:var(--ink-soft);">What it does, in words: [[plain operational reading — what goes in, what comes out, why this form.]]</p>
+          <ul style="list-style:none; margin:.9rem 0 0; padding:0; display:grid; gap:.5rem;">
+            <li style="display:grid; grid-template-columns:auto 1fr; gap:.7rem; align-items:baseline; font-size:.98rem; color:var(--ink-soft);"><span style="font-family:var(--mono); color:var(--accent-deep); white-space:nowrap;">Q, K, V</span><span>[[query, key, value matrices — one row per token; say what each "asks", "advertises", and "carries".]]</span></li>
+            <li style="display:grid; grid-template-columns:auto 1fr; gap:.7rem; align-items:baseline; font-size:.98rem; color:var(--ink-soft);"><span style="font-family:var(--mono); color:var(--accent-deep); white-space:nowrap;">QK<sup>⊤</sup></span><span>[[every query dotted with every key → a grid of raw relevance scores.]]</span></li>
+            <li style="display:grid; grid-template-columns:auto 1fr; gap:.7rem; align-items:baseline; font-size:.98rem; color:var(--ink-soft);"><span style="font-family:var(--mono); color:var(--accent-deep); white-space:nowrap;">√d<sub>k</sub></span><span>[[scaling factor that keeps the scores from blowing up as the dimension grows.]]</span></li>
+            <li style="display:grid; grid-template-columns:auto 1fr; gap:.7rem; align-items:baseline; font-size:.98rem; color:var(--ink-soft);"><span style="font-family:var(--mono); color:var(--accent-deep); white-space:nowrap;">softmax</span><span>[[turns the scores in each row into weights that sum to 1.]]</span></li>
+          </ul>
+        </div>
+
+        <details class="curious" style="margin:1.1rem 0; border:1px solid var(--line); border-radius:12px; background:var(--surface-2); overflow:hidden;">
+          <summary style="cursor:pointer; list-style:none; padding:.75rem .95rem; font-family:var(--display); font-weight:600; font-size:.92rem; color:var(--accent-deep); display:flex; align-items:center; gap:.55rem;">
+            <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex:none; color:var(--accent); transition:transform .15s ease;"><path d="M9 6l6 6-6 6"></path></svg>
+            For the curious — a tiny worked example
+          </summary>
+          <div style="padding:0 .95rem .95rem; font-size:.98rem; color:var(--ink-soft);">
+            <p style="margin:0;">[[Optional: small concrete numbers, or a fuller derivation that is interesting but not essential to the main read.]]</p>
+          </div>
+        </details>
+
+        <details class="analogy" style="margin:1.2rem 0; border:1px solid var(--accent-tint); border-radius:12px; background:var(--surface); overflow:hidden;">
+          <summary style="cursor:pointer; list-style:none; padding:.75rem .95rem; background:var(--accent-tint); font-family:var(--display); font-weight:600; font-size:.92rem; color:var(--accent-deep); display:flex; align-items:center; gap:.55rem;">
+            <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex:none; color:var(--accent); transition:transform .15s ease;"><path d="M9 6l6 6-6 6"></path></svg>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex:none; color:var(--accent);"><path d="M9 18h6M10 22h4M8.5 14a5 5 0 1 1 7 0c-.6.6-1 1.2-1 2h-5c0-.8-.4-1.4-1-2z"></path></svg>
+            Analogy
+          </summary>
+          <div style="padding:.85rem .95rem .95rem; font-size:1rem; color:var(--ink-soft);">
+            <p style="margin:0;">[[An accurate analogy from a domain the reader knows &mdash; law, business, music, sport, craftsmanship, everyday life. Pick the plainest one that genuinely fits. Then, in one line, name where it breaks down: "like X, though unlike X here Y." An analogy that leaks unmarked teaches a wrong intuition.]]</p>
+          </div>
+        </details>
+
+        <figure style="margin:1.6rem 0; padding:1.1rem; background:var(--surface-2); border:1px solid var(--line); border-radius:12px;">
+          <svg viewBox="0 0 640 200" role="img" aria-label="[[describe the diagram]]" xmlns="http://www.w3.org/2000/svg" style="display:block; max-width:100%; height:auto; margin:0 auto; font-family:var(--display);">
+            <defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" style="fill:var(--accent);"></path></marker></defs>
+            <rect x="20" y="70" width="150" height="60" rx="10" style="fill:var(--accent-tint); stroke:var(--accent);" stroke-width="1.5"></rect>
+            <text x="95" y="105" text-anchor="middle" font-size="14" style="fill:var(--ink);">Input</text>
+            <line x1="170" y1="100" x2="240" y2="100" style="stroke:var(--accent);" stroke-width="1.5" marker-end="url(#arrow)"></line>
+            <rect x="245" y="70" width="150" height="60" rx="10" style="fill:var(--surface); stroke:var(--accent);" stroke-width="1.5"></rect>
+            <text x="320" y="105" text-anchor="middle" font-size="14" style="fill:var(--ink);">Process</text>
+            <line x1="395" y1="100" x2="465" y2="100" style="stroke:var(--accent);" stroke-width="1.5" marker-end="url(#arrow)"></line>
+            <rect x="470" y="70" width="150" height="60" rx="10" style="fill:var(--accent-tint); stroke:var(--accent);" stroke-width="1.5"></rect>
+            <text x="545" y="105" text-anchor="middle" font-size="14" style="fill:var(--ink);">Output</text>
+          </svg>
+          <figcaption style="font-family:var(--mono); font-size:.74rem; color:var(--ink-faint); margin-top:.7rem; text-align:center;"><span style="color:var(--accent-deep); font-weight:500;">Figure A.</span> [[Caption — what idea this makes clear. Note "redrawn from Fig. n" if it mirrors the paper's data.]]</figcaption>
+        </figure>
+
+        <div class="speak" style="margin:1.6rem 0; border:1px solid color-mix(in srgb,var(--speak) 28%,var(--line)); border-radius:12px; background:var(--speak-tint); padding:1rem 1.2rem;">
+          <span style="display:flex; align-items:center; gap:.45rem; font-family:var(--mono); font-size:.7rem; font-weight:500; letter-spacing:.1em; text-transform:uppercase; color:var(--speak); margin-bottom:.6rem;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.6-.8L3 21l1.8-5.4A8.5 8.5 0 1 1 21 11.5z"></path></svg>
+            How to say it
+          </span>
+          <ul style="margin:0; padding:0; list-style:none; display:grid; gap:.55rem;">
+            <li style="position:relative; padding-left:1.5rem; font-size:1rem; font-style:italic; color:var(--ink);" style-before="content:'“'; position:absolute; left:0; top:.15rem; font-family:var(--body); font-size:1.5rem; font-style:normal; color:var(--speak); line-height:1;">[[A sentence he could use aloud to an ML engineer and sound fluent.]]</li>
+            <li style="position:relative; padding-left:1.5rem; font-size:1rem; font-style:italic; color:var(--ink);" style-before="content:'“'; position:absolute; left:0; top:.15rem; font-family:var(--body); font-size:1.5rem; font-style:normal; color:var(--speak); line-height:1;">[[A second framing, perhaps the one-line "why it matters" version.]]</li>
+          </ul>
+        </div>
+
+        <div class="quiz" style="margin:1.6rem 0 .4rem; border:1px solid var(--line-strong); border-radius:12px; background:var(--surface); overflow:hidden;">
+          <div style="font-family:var(--mono); font-size:.72rem; font-weight:500; letter-spacing:.1em; text-transform:uppercase; color:var(--accent-deep); background:var(--accent-tint); padding:.65rem .95rem; display:flex; align-items:center; gap:.45rem; border-bottom:1px solid color-mix(in srgb,var(--accent) 18%,transparent);">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.1 9a3 3 0 1 1 4.5 2.6c-.8.5-1.6 1.1-1.6 2.4"></path><line x1="12" y1="17" x2="12.01" y2="17"></line><circle cx="12" cy="12" r="10"></circle></svg>
+            Check your understanding
+          </div>
+          <div style="padding:.95rem;">
+            <p style="margin:0 0 .6rem; font-weight:500; color:var(--ink); font-family:var(--body);">[[A question that asks the reader to explain WHY something works, not just recall a fact.]]</p>
+            <details style="margin:0; border:0; background:transparent;">
+              <summary style="cursor:pointer; list-style:none; padding:0; color:var(--accent); font-family:var(--mono); font-size:.78rem; display:flex; align-items:center; gap:.4rem;"><svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex:none; color:var(--accent); transition:transform .15s ease;"><path d="M9 6l6 6-6 6"></path></svg>Show answer</summary>
+              <div style="padding:.5rem 0 0; font-size:.98rem; color:var(--ink-soft);"><p style="margin:0;">[[The answer, in plain language.]]</p></div>
+            </details>
+          </div>
+          <div style="padding:.95rem; border-top:1px solid var(--line);">
+            <p style="margin:0 0 .6rem; font-weight:500; color:var(--ink); font-family:var(--body);">[[A "what would happen if you changed X" prediction question.]]</p>
+            <details style="margin:0; border:0; background:transparent;">
+              <summary style="cursor:pointer; list-style:none; padding:0; color:var(--accent); font-family:var(--mono); font-size:.78rem; display:flex; align-items:center; gap:.4rem;"><svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex:none; color:var(--accent); transition:transform .15s ease;"><path d="M9 6l6 6-6 6"></path></svg>Show answer</summary>
+              <div style="padding:.5rem 0 0; font-size:.98rem; color:var(--ink-soft);"><p style="margin:0;">[[The answer.]]</p></div>
+            </details>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer style="max-width:53rem; margin:0 auto; padding:0 clamp(1rem,5vw,2.2rem) 4rem; color:var(--ink-faint); font-family:var(--mono); font-size:.74rem; line-height:1.7; text-align:center;">
+    Decoded walkthrough generated by the Laymanize skill. Original work, claims, and figures belong to the paper's authors; diagrams here are EVI's own redrawings for explanation.
+  </footer>
+
+  <div id="lz-popover" role="status" aria-live="polite" style="position:absolute; z-index:60; max-width:min(22rem,90vw); display:none; background:var(--ink); color:var(--page); font-family:var(--display); font-size:.86rem; line-height:1.5; padding:.75rem .9rem; border-radius:11px; box-shadow:0 12px 34px rgba(0,0,0,.32); border:1px solid color-mix(in srgb,var(--ink) 80%,#000);"></div>
+
+  <div id="lz-overlay" style="position:fixed; inset:0; background:rgba(7,9,16,.5); z-index:70; opacity:0; visibility:hidden; transition:opacity .2s,visibility .2s;"></div>
+
+  <aside id="nav-drawer" role="dialog" aria-modal="true" aria-label="Contents" style="position:fixed; top:0; bottom:0; left:0; width:min(25rem,86vw); background:var(--surface); z-index:80; box-shadow:0 0 50px rgba(0,0,0,.3); transform:translateX(-104%); transition:transform .24s ease; display:flex; flex-direction:column; border-right:1px solid var(--line);">
+    <div style="display:flex; align-items:center; justify-content:space-between; padding:1rem 1.2rem; border-bottom:1px solid var(--line);">
+      <h3 style="font-family:var(--display); font-size:.95rem; font-weight:600; margin:0; letter-spacing:.01em; color:var(--ink);">Contents</h3>
+      <button data-close="" type="button" aria-label="Close" style="background:none; border:0; cursor:pointer; color:var(--ink-faint); font-size:1.5rem; line-height:1; padding:.1rem .35rem; border-radius:8px;" style-hover="color:var(--ink); background:var(--surface-2);">×</button>
+    </div>
+    <nav style="overflow-y:auto; padding:.6rem 1.2rem 2rem;"><ul id="nav-list" style="list-style:none; margin:0; padding:0;"></ul></nav>
+  </aside>
+
+  <aside id="gloss-drawer" role="dialog" aria-modal="true" aria-label="Glossary" style="position:fixed; top:0; bottom:0; right:0; width:min(25rem,86vw); background:var(--surface); z-index:80; box-shadow:0 0 50px rgba(0,0,0,.3); transform:translateX(104%); transition:transform .24s ease; display:flex; flex-direction:column; border-left:1px solid var(--line);">
+    <div style="display:flex; align-items:center; justify-content:space-between; padding:1rem 1.2rem; border-bottom:1px solid var(--line);">
+      <h3 style="font-family:var(--display); font-size:.95rem; font-weight:600; margin:0; letter-spacing:.01em; color:var(--ink);">Glossary</h3>
+      <button data-close="" type="button" aria-label="Close" style="background:none; border:0; cursor:pointer; color:var(--ink-faint); font-size:1.5rem; line-height:1; padding:.1rem .35rem; border-radius:8px;" style-hover="color:var(--ink); background:var(--surface-2);">×</button>
+    </div>
+    <div style="overflow-y:auto; padding:.6rem 1.2rem 2rem;" id="gloss-body">
+      <div class="glossary-entry" id="glo-attention" style="padding:.9rem 0; border-bottom:1px solid var(--line);">
+        <p class="g-term" style="font-family:var(--display); font-weight:600; font-size:.98rem; color:var(--ink); margin:0 0 .3rem;">Attention mechanism</p>
+        <p class="glossary-def" style="margin:0; font-size:.96rem; color:var(--ink-soft); line-height:1.6;">[[Plain definition — this exact text is what the inline tooltip shows. Keep it self-contained.]]</p>
+        <p class="g-formal" style="margin:.4rem 0 0; font-size:.86rem; color:var(--ink-faint); font-style:italic;">[[Optional formal/precise definition, where it differs from the plain one.]]</p>
+      </div>
+    </div>
+  </aside>
+
+</div>
+
+<script>
+(function(){
+  document.addEventListener('DOMContentLoaded', function(){
+    /* Revive Claude Design `style-hover` attributes as real hover states — standalone-safe. */
+    [].forEach.call(document.querySelectorAll('[style-hover]'), function(el){
+      var base = el.getAttribute('style') || '';
+      var hov  = el.getAttribute('style-hover') || '';
+      el.addEventListener('mouseenter', function(){ el.setAttribute('style', base + ';' + hov); });
+      el.addEventListener('mouseleave', function(){ el.setAttribute('style', base); });
+    });
+
+
+    var root = document.getElementById('lz-root');
+    if(!root) return;
+    var p = { accentTheme:'Electric Blue', bodyFont:'Serif', startDark:false };
+
+    var ACC = {
+      'Electric Blue': { l:['#3a5bff','#2436c4','#e9edff'], d:['#6f8cff','#a3b6ff','#182239'] },
+      'Indigo':        { l:['#5b46e5','#3f2bb8','#ece9fd'], d:['#8f7cff','#b6abff','#1d1a3a'] },
+      'Cyan':          { l:['#0ea5b8','#0a7d8c','#e1f5f7'], d:['#3fd0e0','#7fe3ee','#10262c'] }
+    };
+    var aset = ACC[p.accentTheme] || ACC['Electric Blue'];
+
+    var LIGHT = {'--ink':'#15192a','--ink-soft':'#454d63','--ink-faint':'#7a8398','--page':'#eceef7','--surface':'#ffffff','--surface-2':'#f5f6fc','--line':'#e3e5f0','--line-strong':'#d2d6e6','--speak':'#6d4dff','--speak-tint':'#efeafe','--shadow':'0 1px 2px rgba(20,24,45,.05),0 14px 36px rgba(20,24,45,.09)','--accent':aset.l[0],'--accent-deep':aset.l[1],'--accent-tint':aset.l[2]};
+    var DARK = {'--ink':'#e8eaf4','--ink-soft':'#a9b1c6','--ink-faint':'#6f7790','--page':'#070910','--surface':'#10131e','--surface-2':'#161a28','--line':'#222840','--line-strong':'#313855','--speak':'#ab8dff','--speak-tint':'#1c1936','--shadow':'0 1px 2px rgba(0,0,0,.5),0 18px 44px rgba(0,0,0,.55)','--accent':aset.d[0],'--accent-deep':aset.d[1],'--accent-tint':aset.d[2]};
+
+    if(p.bodyFont === 'Sans'){ root.style.setProperty('--body', "'Space Grotesk',system-ui,sans-serif"); }
+
+    var MOON = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>';
+    var SUN  = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>';
+
+    var dark = !!p.startDark;
+    function applyTheme(d){
+      var v = d ? DARK : LIGHT;
+      for(var k in v){ root.style.setProperty(k, v[k]); document.documentElement.style.setProperty(k, v[k]); }
+      var ico = document.getElementById('theme-ico'); if(ico) ico.innerHTML = d ? SUN : MOON;
+      var lbl = document.getElementById('theme-lbl'); if(lbl) lbl.textContent = d ? 'Light' : 'Dark';
+    }
+    applyTheme(dark);
+    var tt = document.getElementById('theme-toggle');
+    if(tt) tt.addEventListener('click', function(){ dark = !dark; applyTheme(dark); });
+
+    // ---- build Contents ----
+    var navList = document.getElementById('nav-list');
+    var sections = [].slice.call(document.querySelectorAll('.paper-section'));
+    sections.forEach(function(sec){
+      var h = sec.querySelector('.section-title');
+      var eye = sec.querySelector('.eyebrow');
+      if(!h) return;
+      var li = document.createElement('li');
+      var a = document.createElement('a');
+      a.href = '#' + sec.id;
+      a.style.cssText = 'display:block;padding:.55rem .2rem;color:var(--ink-soft);text-decoration:none;font-family:var(--display);font-size:.92rem;border-bottom:1px solid var(--line);transition:color .15s;';
+      a.innerHTML = (eye ? '<span style="display:block;font-family:var(--mono);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-deep);margin-bottom:.15rem;">'+eye.textContent+'</span>' : '') + h.textContent;
+      a.addEventListener('mouseenter', function(){ a.style.color = 'var(--accent)'; });
+      a.addEventListener('mouseleave', function(){ a.style.color = 'var(--ink-soft)'; });
+      a.addEventListener('click', function(){ closeDrawers(); });
+      li.appendChild(a);
+      navList.appendChild(li);
+    });
+
+    // ---- reading progress ----
+    var bar = document.getElementById('lz-progress');
+    function onScroll(){
+      var hh = document.documentElement;
+      var max = (hh.scrollHeight - hh.clientHeight) || 1;
+      bar.style.width = Math.min(100, (hh.scrollTop / max) * 100) + '%';
+    }
+    document.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+
+    // ---- term tooltip popover ----
+    var pop = document.getElementById('lz-popover');
+    var openTermBtn = null;
+    function defForTerm(slug, fallback){
+      var entry = document.getElementById('glo-' + slug);
+      if(entry){
+        var d = entry.querySelector('.glossary-def');
+        var t = entry.querySelector('.g-term');
+        return { term: t ? t.textContent : slug, html: d ? d.innerHTML : (fallback||'') };
+      }
+      return { term: slug, html: fallback || 'Definition not found.' };
+    }
+    function showPopover(btn){
+      var slug = btn.getAttribute('data-term') || '';
+      var info = defForTerm(slug, btn.getAttribute('data-def'));
+      pop.innerHTML = '<span style="display:block;font-family:var(--mono);font-weight:500;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:.3rem;">'+info.term+'</span>'+info.html+'<span style="display:block;margin-top:.55rem;font-family:var(--mono);font-size:.66rem;color:var(--page);opacity:.55;">Tap the term again to dismiss · full list in Glossary</span>';
+      pop.style.display = 'block';
+      var r = btn.getBoundingClientRect();
+      var top = r.bottom + window.scrollY + 8;
+      pop.style.left = '0px'; pop.style.top = top + 'px';
+      var pw = pop.offsetWidth, ph = pop.offsetHeight;
+      var left = r.left + window.scrollX;
+      if(left + pw > window.scrollX + document.documentElement.clientWidth - 12){ left = window.scrollX + document.documentElement.clientWidth - pw - 12; }
+      if(left < window.scrollX + 12) left = window.scrollX + 12;
+      if(r.bottom + ph + 16 > document.documentElement.clientHeight && r.top - ph - 8 > 0){ top = r.top + window.scrollY - ph - 8; }
+      pop.style.left = left + 'px'; pop.style.top = top + 'px';
+      openTermBtn = btn; btn.setAttribute('aria-expanded','true');
+    }
+    function hidePopover(){
+      pop.style.display = 'none';
+      if(openTermBtn){ openTermBtn.setAttribute('aria-expanded','false'); openTermBtn = null; }
+    }
+    document.addEventListener('click', function(e){
+      var btn = e.target.closest ? e.target.closest('.term') : null;
+      if(btn){ e.preventDefault(); if(openTermBtn === btn){ hidePopover(); } else { showPopover(btn); } return; }
+      if(!e.target.closest || !e.target.closest('#lz-popover')) hidePopover();
+    });
+    document.addEventListener('scroll', function(){ if(openTermBtn) hidePopover(); }, {passive:true});
+
+    // ---- drawers ----
+    var overlay = document.getElementById('lz-overlay');
+    var navDrawer = document.getElementById('nav-drawer');
+    var glossDrawer = document.getElementById('gloss-drawer');
+    function closeDrawers(){
+      navDrawer.style.transform = 'translateX(-104%)';
+      glossDrawer.style.transform = 'translateX(104%)';
+      overlay.style.opacity = '0';
+      overlay.style.visibility = 'hidden';
+    }
+    function openDrawer(d){
+      closeDrawers();
+      d.style.transform = 'translateX(0)';
+      overlay.style.opacity = '1';
+      overlay.style.visibility = 'visible';
+      var c = d.querySelector('[data-close]'); if(c) c.focus();
+    }
+    document.getElementById('open-nav').addEventListener('click', function(){ openDrawer(navDrawer); });
+    document.getElementById('open-gloss').addEventListener('click', function(){ openDrawer(glossDrawer); });
+    overlay.addEventListener('click', closeDrawers);
+    [].forEach.call(document.querySelectorAll('[data-close]'), function(b){ b.addEventListener('click', closeDrawers); });
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape'){ closeDrawers(); hidePopover(); } });
+
+    // ---- details chevrons ----
+    [].forEach.call(document.querySelectorAll('details'), function(d){
+      var c = d.querySelector('.chev');
+      d.addEventListener('toggle', function(){ if(c) c.style.transform = d.open ? 'rotate(90deg)' : 'rotate(0deg)'; });
+    });
+
+    // ---- MathJax ----
+    function typeset(){
+      if(window.MathJax && window.MathJax.typesetPromise){ window.MathJax.typesetPromise([root]).catch(function(){}); }
+      else { setTimeout(typeset, 200); }
+    }
+    typeset();
+  });
+})();
+</script>
+
+</body>
+</html>

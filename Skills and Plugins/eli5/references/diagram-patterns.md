@@ -1,0 +1,125 @@
+# Diagram patterns for ELI5
+
+Read this when you are about to draw a diagram. Author **original** inline SVG — never reproduce figures from elsewhere. Every diagram should make one specific idea clearer; if it doesn't, cut it.
+
+## Colours: use the theme variables, so light and dark mode both work
+
+The template themes everything through CSS variables on `#lz-root`, and it ships a light/dark toggle. Your SVG must use those variables too — applied through a `style="…"` attribute, **not** the old `fill="#hex"` form — or the diagram will turn dark-on-dark (or glare white-on-dark) the moment the reader switches mode.
+
+- Lines / arrows / "active" stroke: `var(--accent)`
+- Filled "active" box: `fill:var(--accent-tint)`, `stroke:var(--accent)`
+- Plain box: `fill:var(--surface)`, `stroke:var(--accent)`
+- Muted / "before" box: `fill:var(--surface-2)`, `stroke:var(--line-strong)`
+- Primary text: `fill:var(--ink)`; secondary text: `fill:var(--ink-faint)`; emphasis label: `fill:var(--accent-deep)`
+- Font: set `style="font-family:var(--display)"` on the `<svg>` (Space Grotesk); `<text>` children inherit it.
+- Keep stroke widths at `1.5`, corner radius `8`–`10`, font-size `13`–`15`.
+
+An element takes only one `style` attribute, so combine fill and stroke together: `style="fill:var(--surface); stroke:var(--accent);"`. Numeric attributes like `stroke-width` stay as ordinary attributes.
+
+Wrap every diagram in the template's `<figure>` … `<figcaption>` so it inherits spacing and caption styling. If a diagram depicts real numbers, note the source in the caption.
+
+## When SVG, when Chart.js
+
+- **Inline SVG** — structure, data flow, sequence/pipeline, conceptual relationships, before/after, "shape of the idea" schematics. Almost everything.
+- **Chart.js** (uncomment its CDN line in the template head) — only genuinely quantitative content: a growth curve, a comparison, a trend. Read the theme colours at run time (see the example below) so the chart matches the active mode; label it as illustrative and attribute any real numbers to their source.
+
+## Shared arrowhead
+
+Put this `<defs>` once inside any SVG that uses arrows:
+
+```html
+<defs>
+  <marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+    <path d="M0,0 L7,3 L0,6 Z" style="fill:var(--accent);"/>
+  </marker>
+</defs>
+```
+
+Then add `marker-end="url(#arrow)"` to any `<line>` or `<path>`.
+
+---
+
+## Pattern 1 — horizontal pipeline (A → B → C)
+
+Good for "input goes through these stages and out comes the result".
+
+```html
+<svg viewBox="0 0 680 140" role="img" aria-label="[[what this pipeline shows]]" xmlns="http://www.w3.org/2000/svg" style="font-family:var(--display);">
+  <defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" style="fill:var(--accent);"/></marker></defs>
+  <g font-size="14">
+    <rect x="20"  y="45" width="150" height="50" rx="8" style="fill:var(--surface); stroke:var(--accent);" stroke-width="1.5"/>
+    <text x="95"  y="75" text-anchor="middle" style="fill:var(--ink);">[[Start]]</text>
+    <line x1="170" y1="70" x2="245" y2="70" style="stroke:var(--accent);" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <rect x="250" y="45" width="170" height="50" rx="8" style="fill:var(--accent-tint); stroke:var(--accent);" stroke-width="1.5"/>
+    <text x="335" y="75" text-anchor="middle" style="fill:var(--ink);">[[Middle step]]</text>
+    <line x1="420" y1="70" x2="495" y2="70" style="stroke:var(--accent);" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <rect x="500" y="45" width="160" height="50" rx="8" style="fill:var(--surface); stroke:var(--accent);" stroke-width="1.5"/>
+    <text x="580" y="75" text-anchor="middle" style="fill:var(--ink);">[[Result]]</text>
+  </g>
+</svg>
+```
+
+## Pattern 2 — stacked layers (bottom-up)
+
+Good for "this sits on top of that". Draw from bottom (input) to top (output).
+
+```html
+<svg viewBox="0 0 360 260" role="img" aria-label="[[what this stack shows]]" xmlns="http://www.w3.org/2000/svg" style="font-family:var(--display);">
+  <g font-size="13" text-anchor="middle">
+    <rect x="70" y="200" width="220" height="44" rx="8" style="fill:var(--surface); stroke:var(--accent);" stroke-width="1.5"/><text x="180" y="227" style="fill:var(--ink);">[[Bottom layer]]</text>
+    <rect x="70" y="146" width="220" height="44" rx="8" style="fill:var(--accent-tint); stroke:var(--accent);" stroke-width="1.5"/><text x="180" y="173" style="fill:var(--ink);">[[Repeated stage ×N]]</text>
+    <rect x="70" y="92"  width="220" height="44" rx="8" style="fill:var(--accent-tint); stroke:var(--accent);" stroke-width="1.5"/><text x="180" y="119" style="fill:var(--ink);">[[Transform step]]</text>
+    <rect x="70" y="38"  width="220" height="44" rx="8" style="fill:var(--surface); stroke:var(--accent);" stroke-width="1.5"/><text x="180" y="65" style="fill:var(--ink);">[[Top / output]]</text>
+  </g>
+</svg>
+```
+
+## Pattern 3 — two-column comparison (before / after, this vs that)
+
+```html
+<svg viewBox="0 0 660 200" role="img" aria-label="[[what is being compared]]" xmlns="http://www.w3.org/2000/svg" style="font-family:var(--display);">
+  <g>
+    <text x="170" y="28" text-anchor="middle" font-size="13" font-weight="600" style="fill:var(--ink-faint);">[[BEFORE / OTHER]]</text>
+    <rect x="30" y="44" width="280" height="130" rx="10" style="fill:var(--surface-2); stroke:var(--line-strong);" stroke-width="1.5"/>
+    <text x="170" y="115" text-anchor="middle" font-size="14" style="fill:var(--ink);">[[what it is / its limit]]</text>
+
+    <text x="490" y="28" text-anchor="middle" font-size="13" font-weight="600" style="fill:var(--accent-deep);">[[AFTER / THIS]]</text>
+    <rect x="350" y="44" width="280" height="130" rx="10" style="fill:var(--accent-tint); stroke:var(--accent);" stroke-width="1.5"/>
+    <text x="490" y="115" text-anchor="middle" font-size="14" style="fill:var(--ink);">[[the change / the gain]]</text>
+  </g>
+</svg>
+```
+
+## Pattern 4 — labelled loop / feedback
+
+For iterative procedures, draw boxes around a cycle and use a curved `<path>` with `marker-end="url(#arrow)"` to close the loop back to the start. Add a short label on the return arrow (e.g. "repeat until it settles").
+
+---
+
+## Quick Chart.js example (only when quantitative)
+
+Read the theme colours from `#lz-root` at run time so the chart matches the active mode:
+
+```html
+<figure>
+  <canvas id="c1" height="220" aria-label="[[what the chart shows]]"></canvas>
+  <figcaption style="font-family:var(--mono); font-size:.74rem; color:var(--ink-faint); margin-top:.7rem; text-align:center;"><span style="color:var(--accent-deep); font-weight:500;">Figure B.</span> [[What the chart shows]] — illustrative; note the source if the numbers are real.</figcaption>
+</figure>
+<script>
+  (function(){
+    var css = getComputedStyle(document.getElementById('lz-root'));
+    var accent = css.getPropertyValue('--accent').trim();
+    var tint   = css.getPropertyValue('--accent-tint').trim();
+    var ink    = css.getPropertyValue('--ink-soft').trim();
+    new Chart(document.getElementById('c1'), {
+      type:'line',
+      data:{ labels:['[[t1]]','[[t2]]','[[t3]]','[[t4]]'], datasets:[{ label:'[[series]]', data:[/* real numbers only */],
+        borderColor:accent, backgroundColor:tint, tension:.3, fill:true }]},
+      options:{ plugins:{legend:{labels:{color:ink, font:{family:'Space Grotesk'}}}},
+        scales:{ x:{ticks:{color:ink, font:{family:'Space Grotesk'}}}, y:{ticks:{color:ink, font:{family:'Space Grotesk'}}} } }
+    });
+  })();
+</script>
+```
+
+The chart is coloured for whichever mode is active when it loads; it will not repaint on a later toggle (the SVG diagrams above do adapt live). Keep charts honest: if your source gives four data points, draw four — do not invent a smooth curve the data doesn't support.

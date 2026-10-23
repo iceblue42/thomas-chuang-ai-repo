@@ -1,0 +1,15 @@
+{
+  "name": "progress-tracker",
+  "version": "0.2.3",
+  "description": "Tracks the repo's project plan and the live multi-agent-building run across sessions",
+  "types": "./types/index.d.ts",
+  "userConfig": {
+    "display": {
+      "type": "string",
+      "title": "Display",
+      "description": "band: summary above the prompt (full view on /progress-tracker). pane: full view in the side panel, opened at session start.",
+      "default": "pane",
+      "options": ["band", "pane"]
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "tommy-local-mabl",
+  "description": "Tommy's local plugins: MAB fork with a local Qwen implementer",
+  "owner": {
+    "name": "Tommy Chuang"
+  },
+  "plugins": [
+    {
+      "name": "multi-agent-building-local",
+      "description": "Multi-agent build pipeline with a local Qwen (Ollama) implementer and test author, Codex review, Fable planning and triage, Sonnet/Opus escalation.",
+      "source": "./",
+      "category": "productivity",
+      "version": "1.7.0"
+    }
+  ]
+}
