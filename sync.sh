@@ -37,7 +37,7 @@ done
 
 git add -A
 if ! git diff --cached --quiet; then
-  what=$(git diff --cached --name-only | awk -F/ '{print $2}' | sort -u | paste -sd, -)
+  what=$(git diff --cached --name-only | awk -F/ '{print (NF>1 ? $2 : $1)}' | sort -u | paste -sd, -)
   git commit -q -m "chore(auto-sync): update ${what:-repo}"
 fi
 if [ -n "$(git log @{u}.. --oneline 2>/dev/null)" ]; then
